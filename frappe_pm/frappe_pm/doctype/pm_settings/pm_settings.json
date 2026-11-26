@@ -1,0 +1,193 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-26 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "working_days_sb",
+  "working_days",
+  "hours_per_day",
+  "holiday_list",
+  "defaults_sb",
+  "default_task_priority",
+  "default_project_type",
+  "enable_sprints",
+  "enable_time_tracking",
+  "enable_budgets",
+  "enable_portal",
+  "notify_sb",
+  "overdue_alerts",
+  "due_soon_days",
+  "timesheet_sb",
+  "lock_timesheets_after_days",
+  "allow_overlapping_time"
+ ],
+ "fields": [
+  {
+   "fieldname": "working_days_sb",
+   "fieldtype": "Section Break",
+   "label": "Working Time"
+  },
+  {
+   "fieldname": "working_days",
+   "fieldtype": "Data",
+   "label": "Working Days",
+   "default": "Mon Tue Wed Thu Fri"
+  },
+  {
+   "fieldname": "hours_per_day",
+   "fieldtype": "Float",
+   "label": "Hours Per Day",
+   "default": "8"
+  },
+  {
+   "fieldname": "holiday_list",
+   "fieldtype": "Link",
+   "label": "Holiday List",
+   "options": "Holiday List"
+  },
+  {
+   "fieldname": "defaults_sb",
+   "fieldtype": "Section Break",
+   "label": "Defaults"
+  },
+  {
+   "fieldname": "default_task_priority",
+   "fieldtype": "Select",
+   "label": "Default Task Priority",
+   "options": "Low\nMedium\nHigh\nUrgent",
+   "default": "Medium"
+  },
+  {
+   "fieldname": "default_project_type",
+   "fieldtype": "Link",
+   "label": "Default Project Type",
+   "options": "PM Project Type"
+  },
+  {
+   "fieldname": "enable_sprints",
+   "fieldtype": "Check",
+   "label": "Enable Sprints",
+   "default": "1"
+  },
+  {
+   "fieldname": "enable_time_tracking",
+   "fieldtype": "Check",
+   "label": "Enable Time Tracking",
+   "default": "1"
+  },
+  {
+   "fieldname": "enable_budgets",
+   "fieldtype": "Check",
+   "label": "Enable Budgets",
+   "default": "1"
+  },
+  {
+   "fieldname": "enable_portal",
+   "fieldtype": "Check",
+   "label": "Enable Client Portal",
+   "default": "0"
+  },
+  {
+   "fieldname": "notify_sb",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "fieldname": "overdue_alerts",
+   "fieldtype": "Check",
+   "label": "Send Overdue Alerts",
+   "default": "1"
+  },
+  {
+   "fieldname": "due_soon_days",
+   "fieldtype": "Int",
+   "label": "Due Soon Window (days)",
+   "default": "2"
+  },
+  {
+   "fieldname": "timesheet_sb",
+   "fieldtype": "Section Break",
+   "label": "Timesheets"
+  },
+  {
+   "fieldname": "lock_timesheets_after_days",
+   "fieldtype": "Int",
+   "label": "Lock Timesheets After (days)",
+   "default": "0",
+   "description": "0 disables locking"
+  },
+  {
+   "fieldname": "allow_overlapping_time",
+   "fieldtype": "Check",
+   "label": "Allow Overlapping Time Logs",
+   "default": "0"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-26 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe PM",
+ "name": "PM Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "PM Admin",
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "email": 1
+  },
+  {
+   "role": "Project Manager",
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "email": 1
+  },
+  {
+   "role": "Team Member",
+   "create": 1,
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PM Viewer",
+   "read": 1,
+   "report": 1,
+   "print": 1
+  },
+  {
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "issingle": 1
+}

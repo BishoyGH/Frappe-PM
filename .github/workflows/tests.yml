@@ -1,0 +1,99 @@
+name: Tests
+on:
+  pull_request:
+  push:
+    branches: [main]
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  unit:
+    name: Unit tests (no site)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m unittest frappe_pm.tests.test_graph -v
+        env:
+          PYTHONPATH: .
+  site:
+    name: Site tests (Frappe ${{ matrix.frappe }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        frappe: [version-15, version-16]
+    services:
+      mariadb:
+        image: mariadb:10.6
+        env:
+          MARIADB_ROOT_PASSWORD: root
+        ports: [3306:3306]
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s --health-timeout=5s --health-retries=10
+      redis:
+        image: redis:7
+        ports: [6379:6379]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: frappe_pm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.frappe == 'version-16' && '3.14' || '3.11' }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.frappe == 'version-16' && '24' || '20' }}
+          check-latest: true
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ matrix.frappe }}-${{ hashFiles('**/pyproject.toml') }}
+          restore-keys: pip-${{ matrix.frappe }}-
+      - name: Cache yarn
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/yarn
+          key: yarn-${{ matrix.frappe }}-${{ github.run_id }}
+          restore-keys: yarn-${{ matrix.frappe }}-
+      - name: Cache bench (frappe checkout, node_modules, built assets)
+        id: bench-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/frappe-bench
+          key: bench-${{ matrix.frappe }}-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: bench-${{ matrix.frappe }}-${{ runner.os }}-
+      - name: Install system packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libcups2-dev redis-tools mariadb-client libmariadb-dev
+      - name: Install bench
+        run: pip install frappe-bench
+      - name: Init bench
+        if: steps.bench-cache.outputs.cache-hit != 'true'
+        run: bench init --skip-redis-config-generation --skip-assets --frappe-branch ${{ matrix.frappe }} --python "$(which python)" ~/frappe-bench
+      - name: Set up site
+        working-directory: ${{ github.workspace }}/../frappe-bench
+        run: |
+          [ -d ~/frappe-bench ] || true
+          cd ~/frappe-bench
+          mariadb --host 127.0.0.1 --port 3306 -u root -proot -e "SET GLOBAL character_set_server='utf8mb4'; SET GLOBAL collation_server='utf8mb4_unicode_ci'"
+          bench set-config -g db_host 127.0.0.1
+          bench set-config -g redis_cache redis://127.0.0.1:6379
+          bench set-config -g redis_queue redis://127.0.0.1:6379
+          bench set-config -g redis_socketio redis://127.0.0.1:6379
+          bench get-app frappe_pm "$GITHUB_WORKSPACE/frappe_pm"
+          bench new-site test_site --db-root-password root --admin-password admin --mariadb-user-host-login-scope='%' --install-app frappe_pm
+          bench --site test_site set-config allow_tests true
+      - name: Run tests
+        run: |
+          cd ~/frappe-bench
+          bench --site test_site run-tests --app frappe_pm

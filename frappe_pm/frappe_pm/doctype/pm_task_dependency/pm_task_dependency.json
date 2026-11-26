@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-26 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "depends_on_task",
+  "subject",
+  "dependency_type",
+  "lag_days"
+ ],
+ "fields": [
+  {
+   "fieldname": "depends_on_task",
+   "fieldtype": "Link",
+   "label": "Depends On",
+   "options": "PM Task",
+   "reqd": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject",
+   "fetch_from": "depends_on_task.subject",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "dependency_type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Finish to Start\nStart to Start\nFinish to Finish\nStart to Finish",
+   "default": "Finish to Start",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "lag_days",
+   "fieldtype": "Int",
+   "label": "Lag (days)",
+   "default": "0"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-26 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe PM",
+ "name": "PM Task Dependency",
+ "owner": "Administrator",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "istable": 1,
+ "editable_grid": 1
+}

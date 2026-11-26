@@ -1,0 +1,23 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"h1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe PM</span>\",\"col\":12}},{\"id\":\"s1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Projects\",\"col\":3}},{\"id\":\"s2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tasks\",\"col\":3}},{\"id\":\"s3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sprints\",\"col\":3}},{\"id\":\"s4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheets\",\"col\":3}}]",
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "project",
+ "indicator_color": "blue",
+ "is_hidden": 0,
+ "label": "Frappe PM",
+ "module": "Frappe PM",
+ "name": "Frappe PM",
+ "public": 1,
+ "roles": [],
+ "sequence_id": 1,
+ "shortcuts": [
+  {"label": "Projects", "link_to": "PM Project", "type": "DocType", "doc_view": "List", "color": "Blue"},
+  {"label": "Tasks", "link_to": "PM Task", "type": "DocType", "doc_view": "Kanban"},
+  {"label": "Sprints", "link_to": "PM Sprint", "type": "DocType", "doc_view": "List"},
+  {"label": "Timesheets", "link_to": "PM Timesheet", "type": "DocType", "doc_view": "List"}
+ ],
+ "title": "Frappe PM"
+}

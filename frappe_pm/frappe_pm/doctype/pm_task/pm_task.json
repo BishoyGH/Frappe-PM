@@ -1,0 +1,397 @@
+{
+ "actions": [],
+ "allow_rename": 0,
+ "creation": "2026-11-26 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "subject",
+  "project",
+  "task_type",
+  "status",
+  "priority",
+  "col1",
+  "parent_pm_task",
+  "is_group",
+  "lft",
+  "rgt",
+  "old_parent",
+  "epic",
+  "sprint",
+  "milestone",
+  "sb_dates",
+  "start_date",
+  "due_date",
+  "completed_on",
+  "is_overdue",
+  "col2",
+  "estimated_hours",
+  "actual_hours",
+  "story_points",
+  "progress",
+  "sb_assign",
+  "reporter",
+  "backlog_rank",
+  "sb_desc",
+  "description",
+  "acceptance_criteria",
+  "sb_bug",
+  "severity",
+  "environment",
+  "steps_to_reproduce",
+  "sb_check",
+  "checklist",
+  "sb_dep",
+  "depends_on",
+  "sb_rec",
+  "is_recurring",
+  "recurrence",
+  "recurrence_end"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "PM-TASK-.#####",
+   "default": "PM-TASK-.#####"
+  },
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject",
+   "reqd": 1,
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "PM Project",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "task_type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Task\nBug\nStory\nEpic\nChore\nMilestone",
+   "default": "Task",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Backlog\nOpen\nIn Progress\nIn Review\nBlocked\nCompleted\nCancelled",
+   "default": "Open",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nUrgent",
+   "default": "Medium",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "col1",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "parent_pm_task",
+   "fieldtype": "Link",
+   "label": "Parent Task",
+   "options": "PM Task"
+  },
+  {
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group",
+   "default": "0"
+  },
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "label": "Left",
+   "hidden": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "label": "Right",
+   "hidden": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "label": "Old Parent",
+   "options": "PM Task",
+   "hidden": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "epic",
+   "fieldtype": "Link",
+   "label": "Epic",
+   "options": "PM Epic"
+  },
+  {
+   "fieldname": "sprint",
+   "fieldtype": "Link",
+   "label": "Sprint",
+   "options": "PM Sprint",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "milestone",
+   "fieldtype": "Link",
+   "label": "Milestone",
+   "options": "PM Milestone"
+  },
+  {
+   "fieldname": "sb_dates",
+   "fieldtype": "Section Break",
+   "label": "Schedule"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Due Date",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "completed_on",
+   "fieldtype": "Date",
+   "label": "Completed On",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "is_overdue",
+   "fieldtype": "Check",
+   "label": "Overdue",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "col2",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "estimated_hours",
+   "fieldtype": "Float",
+   "label": "Estimated Hours"
+  },
+  {
+   "fieldname": "actual_hours",
+   "fieldtype": "Float",
+   "label": "Actual Hours",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "story_points",
+   "fieldtype": "Float",
+   "label": "Story Points"
+  },
+  {
+   "fieldname": "progress",
+   "fieldtype": "Percent",
+   "label": "Progress %",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "sb_assign",
+   "fieldtype": "Section Break",
+   "label": "Assignment"
+  },
+  {
+   "fieldname": "reporter",
+   "fieldtype": "Link",
+   "label": "Reporter",
+   "options": "User"
+  },
+  {
+   "fieldname": "backlog_rank",
+   "fieldtype": "Int",
+   "label": "Backlog Rank",
+   "default": "0"
+  },
+  {
+   "fieldname": "sb_desc",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "acceptance_criteria",
+   "fieldtype": "Text Editor",
+   "label": "Acceptance Criteria"
+  },
+  {
+   "fieldname": "sb_bug",
+   "fieldtype": "Section Break",
+   "label": "Bug Details",
+   "depends_on": "eval:doc.task_type=='Bug'",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "severity",
+   "fieldtype": "Select",
+   "label": "Severity",
+   "options": "\nMinor\nMajor\nCritical\nBlocker"
+  },
+  {
+   "fieldname": "environment",
+   "fieldtype": "Small Text",
+   "label": "Environment"
+  },
+  {
+   "fieldname": "steps_to_reproduce",
+   "fieldtype": "Text Editor",
+   "label": "Steps To Reproduce"
+  },
+  {
+   "fieldname": "sb_check",
+   "fieldtype": "Section Break",
+   "label": "Checklist"
+  },
+  {
+   "fieldname": "checklist",
+   "fieldtype": "Table",
+   "label": "Checklist",
+   "options": "PM Task Checklist Item"
+  },
+  {
+   "fieldname": "sb_dep",
+   "fieldtype": "Section Break",
+   "label": "Dependencies"
+  },
+  {
+   "fieldname": "depends_on",
+   "fieldtype": "Table",
+   "label": "Depends On",
+   "options": "PM Task Dependency"
+  },
+  {
+   "fieldname": "sb_rec",
+   "fieldtype": "Section Break",
+   "label": "Recurrence",
+   "collapsible": 1
+  },
+  {
+   "fieldname": "is_recurring",
+   "fieldtype": "Check",
+   "label": "Recurring",
+   "default": "0"
+  },
+  {
+   "fieldname": "recurrence",
+   "fieldtype": "Select",
+   "label": "Repeat",
+   "options": "\nDaily\nWeekly\nMonthly",
+   "depends_on": "is_recurring"
+  },
+  {
+   "fieldname": "recurrence_end",
+   "fieldtype": "Date",
+   "label": "Repeat Until",
+   "depends_on": "is_recurring"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "links": [],
+ "modified": "2026-11-26 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe PM",
+ "name": "PM Task",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "PM Admin",
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "email": 1
+  },
+  {
+   "role": "Project Manager",
+   "create": 1,
+   "delete": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "email": 1
+  },
+  {
+   "role": "Team Member",
+   "create": 1,
+   "read": 1,
+   "report": 1,
+   "write": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "PM Viewer",
+   "read": 1,
+   "report": 1,
+   "print": 1
+  },
+  {
+   "role": "System Manager",
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "report": 1,
+   "share": 1,
+   "write": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "autoname": "naming_series:",
+ "is_tree": 1,
+ "nsm_parent_field": "parent_pm_task",
+ "title_field": "subject",
+ "show_title_field_in_link": 1,
+ "search_fields": "subject,project,status",
+ "track_changes": 1,
+ "allow_import": 1
+}
