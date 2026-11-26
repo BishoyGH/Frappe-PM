@@ -53,20 +53,20 @@ jobs:
           node-version: ${{ matrix.frappe == 'version-16' && '24' || '20' }}
           check-latest: true
       - name: Cache pip
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/pip
           key: pip-${{ matrix.frappe }}-${{ hashFiles('**/pyproject.toml') }}
           restore-keys: pip-${{ matrix.frappe }}-
       - name: Cache yarn
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.cache/yarn
           key: yarn-${{ matrix.frappe }}-${{ github.run_id }}
           restore-keys: yarn-${{ matrix.frappe }}-
       - name: Cache bench (frappe checkout, node_modules, built assets)
         id: bench-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/frappe-bench
           key: bench-${{ matrix.frappe }}-${{ runner.os }}-${{ github.run_id }}
