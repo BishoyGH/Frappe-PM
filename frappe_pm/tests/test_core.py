@@ -112,3 +112,35 @@ class TestSprint(FrappeTestCase):
         mk("S1", "Active")
         with self.assertRaises(frappe.ValidationError):
             mk("S2", "Active")
+
+
+class TestExtended(FrappeTestCase):
+    def test_risk_score(self):
+        p = make_project()
+        r = frappe.get_doc(
+            {
+                "doctype": "PM Risk",
+                "title": "R",
+                "project": p.name,
+                "probability": "High",
+                "impact": "Critical",
+            }
+        ).insert()
+        self.assertEqual(r.score, 12)
+
+    def test_budget_totals(self):
+        p = make_project()
+        b = frappe.get_doc(
+            {
+                "doctype": "PM Project Budget",
+                "project": p.name,
+                "lines": [{"category": "Labor", "planned_amount": 100, "actual_amount": 30}],
+            }
+        ).insert()
+        self.assertEqual(b.variance, 70)
+
+    def test_reports_run(self):
+        from frappe_pm.frappe_pm.report.pm_overdue_tasks.pm_overdue_tasks import execute
+
+        cols, rows = execute({})
+        self.assertTrue(cols)

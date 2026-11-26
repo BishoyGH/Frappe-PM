@@ -10,7 +10,18 @@ docs = {}
 for p in glob.glob(os.path.join(root, "frappe_pm", "frappe_pm", "doctype", "*", "*.json")):
     d = json.load(open(p))
     docs[d["name"]] = d
-STD = {"User", "Currency", "Holiday List", "Role", "Company", "Customer", "Employee", "Item", "Cost Center"}
+STD = {
+    "User",
+    "Currency",
+    "Holiday List",
+    "Role",
+    "Company",
+    "Customer",
+    "Employee",
+    "Item",
+    "Cost Center",
+    "DocType",
+}
 errs = []
 for name, d in docs.items():
     for f in d["fields"]:

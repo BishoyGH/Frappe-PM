@@ -38,4 +38,9 @@ scheduler_events = {
     "daily": ["frappe_pm.tasks.daily"],
 }
 
-doc_events = {}
+doc_events = {
+    "PM Task": {
+        "after_insert": "frappe_pm.automation.on_task_created",
+        "on_update": "frappe_pm.automation.on_task_update",
+    }
+}
