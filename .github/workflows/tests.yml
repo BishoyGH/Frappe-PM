@@ -15,7 +15,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: python -m unittest frappe_pm.tests.test_graph -v
@@ -45,7 +45,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: frappe_pm
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.frappe == 'version-16' && '3.14' || '3.11' }}
       - uses: actions/setup-node@v4
