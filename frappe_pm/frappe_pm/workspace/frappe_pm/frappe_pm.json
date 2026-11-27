@@ -1,6 +1,15 @@
 {
- "charts": [],
- "content": "[{\"id\":\"h1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Frappe PM</span>\",\"col\":12}},{\"id\":\"s1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Projects\",\"col\":3}},{\"id\":\"s2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tasks\",\"col\":3}},{\"id\":\"s3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Sprints\",\"col\":3}},{\"id\":\"s4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Timesheets\",\"col\":3}}]",
+ "charts": [
+  {
+   "label": "PM Tasks By Status",
+   "chart_name": "PM Tasks By Status"
+  },
+  {
+   "label": "PM Tasks By Priority",
+   "chart_name": "PM Tasks By Priority"
+  }
+ ],
+ "content": "[{\"id\": \"h1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Frappe PM</span>\", \"col\": 12}}, {\"id\": \"n0\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PM Active Projects\", \"col\": 3}}, {\"id\": \"n1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PM Open Tasks\", \"col\": 3}}, {\"id\": \"n2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PM Overdue Tasks Count\", \"col\": 3}}, {\"id\": \"n3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"PM Red Projects\", \"col\": 3}}, {\"id\": \"c0\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PM Tasks By Status\", \"col\": 6}}, {\"id\": \"c1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"PM Tasks By Priority\", \"col\": 6}}, {\"id\": \"s0\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Projects\", \"col\": 3}}, {\"id\": \"s1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Tasks\", \"col\": 3}}, {\"id\": \"s2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Sprints\", \"col\": 3}}, {\"id\": \"s3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Timesheets\", \"col\": 3}}]",
  "doctype": "Workspace",
  "for_user": "",
  "hide_custom": 0,
@@ -14,10 +23,268 @@
  "roles": [],
  "sequence_id": 1,
  "shortcuts": [
-  {"label": "Projects", "link_to": "PM Project", "type": "DocType", "doc_view": "List", "color": "Blue"},
-  {"label": "Tasks", "link_to": "PM Task", "type": "DocType", "doc_view": "Kanban"},
-  {"label": "Sprints", "link_to": "PM Sprint", "type": "DocType", "doc_view": "List"},
-  {"label": "Timesheets", "link_to": "PM Timesheet", "type": "DocType", "doc_view": "List"}
+  {
+   "label": "Projects",
+   "link_to": "PM Project",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Blue"
+  },
+  {
+   "label": "Tasks",
+   "link_to": "PM Task",
+   "type": "DocType",
+   "doc_view": "Kanban"
+  },
+  {
+   "label": "Sprints",
+   "link_to": "PM Sprint",
+   "type": "DocType",
+   "doc_view": "List"
+  },
+  {
+   "label": "Timesheets",
+   "link_to": "PM Timesheet",
+   "type": "DocType",
+   "doc_view": "List"
+  }
  ],
- "title": "Frappe PM"
+ "title": "Frappe PM",
+ "number_cards": [
+  {
+   "label": "PM Active Projects",
+   "number_card_name": "PM Active Projects"
+  },
+  {
+   "label": "PM Open Tasks",
+   "number_card_name": "PM Open Tasks"
+  },
+  {
+   "label": "PM Overdue Tasks Count",
+   "number_card_name": "PM Overdue Tasks Count"
+  },
+  {
+   "label": "PM Red Projects",
+   "number_card_name": "PM Red Projects"
+  }
+ ],
+ "links": [
+  {
+   "type": "Card Break",
+   "label": "Planning",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Epic",
+   "link_to": "PM Epic",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Milestone",
+   "link_to": "PM Milestone",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Release",
+   "link_to": "PM Release",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Project Template",
+   "link_to": "PM Project Template",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Baseline",
+   "link_to": "PM Baseline",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Governance",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Risk",
+   "link_to": "PM Risk",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Issue",
+   "link_to": "PM Issue",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Change Request",
+   "link_to": "PM Change Request",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Decision",
+   "link_to": "PM Decision",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Stakeholder",
+   "link_to": "PM Stakeholder",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Status Update",
+   "link_to": "PM Status Update",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Meeting Note",
+   "link_to": "PM Meeting Note",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Retrospective",
+   "link_to": "PM Retrospective",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Resources & Budget",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Team",
+   "link_to": "PM Team",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Resource Profile",
+   "link_to": "PM Resource Profile",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Resource Allocation",
+   "link_to": "PM Resource Allocation",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Skill",
+   "link_to": "PM Skill",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Activity Type",
+   "link_to": "PM Activity Type",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Project Budget",
+   "link_to": "PM Project Budget",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Reports",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Overdue Tasks",
+   "link_to": "PM Overdue Tasks",
+   "link_type": "Report",
+   "is_query_report": 1,
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Workload By User",
+   "link_to": "PM Workload By User",
+   "link_type": "Report",
+   "is_query_report": 1,
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Project Summary",
+   "link_to": "PM Project Summary",
+   "link_type": "Report",
+   "is_query_report": 1,
+   "hidden": 0
+  },
+  {
+   "type": "Card Break",
+   "label": "Setup",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Settings",
+   "link_to": "PM Settings",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Project Type",
+   "link_to": "PM Project Type",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Automation Rule",
+   "link_to": "PM Automation Rule",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Saved View",
+   "link_to": "PM Saved View",
+   "link_type": "DocType",
+   "hidden": 0
+  },
+  {
+   "type": "Link",
+   "label": "PM Announcement",
+   "link_to": "PM Announcement",
+   "link_type": "DocType",
+   "hidden": 0
+  }
+ ]
 }

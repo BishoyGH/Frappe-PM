@@ -1,0 +1,29 @@
+{
+ "creation": "2026-11-26 00:00:00.000000",
+ "modified": "2026-11-26 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "module": "Frappe PM",
+ "name": "PM Task Status Changed",
+ "docstatus": 0,
+ "doctype": "Notification",
+ "subject": "{{ doc.name }} is now {{ doc.status }}",
+ "document_type": "PM Task",
+ "event": "Value Change",
+ "enabled": 1,
+ "is_standard": 1,
+ "channel": "System Notification",
+ "message": "<p>{{ doc.subject }} changed status to <b>{{ doc.status }}</b>.</p>",
+ "message_type": "HTML",
+ "recipients": [
+  {
+   "receiver_by_document_field": "owner"
+  },
+  {
+   "receiver_by_document_field": "reporter"
+  }
+ ],
+ "condition": "",
+ "send_system_notification": 1,
+ "value_changed": "status"
+}

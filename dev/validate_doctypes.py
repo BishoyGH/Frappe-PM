@@ -38,3 +38,17 @@ print(f"checked {len(docs)} doctypes")
 if errs:
     print("\n".join(errs))
     sys.exit(1)
+
+# standard documents must have valid JSON and the workspace may only reference existing doctypes
+
+base = os.path.join(root, "frappe_pm", "frappe_pm")
+for p in glob.glob(os.path.join(base, "*", "*", "*.json")):
+    if "/doctype/" in p:
+        continue
+    json.load(open(p))
+ws = json.load(open(os.path.join(base, "workspace", "frappe_pm", "frappe_pm.json")))
+bad = [lk["link_to"] for lk in ws["links"] if lk.get("link_type") == "DocType" and lk["link_to"] not in docs]
+if bad:
+    print("workspace links to unknown doctypes:", bad)
+    sys.exit(1)
+print("standard documents OK")

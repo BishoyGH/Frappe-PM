@@ -1,0 +1,26 @@
+{
+ "creation": "2026-11-26 00:00:00.000000",
+ "modified": "2026-11-26 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "module": "Frappe PM",
+ "name": "PM Change Request Approved",
+ "docstatus": 0,
+ "doctype": "Notification",
+ "subject": "Change request {{ doc.name }} {{ doc.status }}",
+ "document_type": "PM Change Request",
+ "event": "Value Change",
+ "enabled": 1,
+ "is_standard": 1,
+ "channel": "System Notification",
+ "message": "<p>{{ doc.title }} is now {{ doc.status }}.</p>",
+ "message_type": "HTML",
+ "recipients": [
+  {
+   "receiver_by_document_field": "requested_by"
+  }
+ ],
+ "condition": "doc.status in ('Approved','Rejected')",
+ "send_system_notification": 1,
+ "value_changed": "status"
+}

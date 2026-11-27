@@ -1,0 +1,21 @@
+{
+ "creation": "2026-11-26 00:00:00.000000",
+ "modified": "2026-11-26 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "module": "Frappe PM",
+ "name": "PM Issues By Priority",
+ "docstatus": 0,
+ "doctype": "Dashboard Chart",
+ "chart_name": "PM Issues By Priority",
+ "chart_type": "Group By",
+ "document_type": "PM Issue",
+ "group_by_type": "Count",
+ "group_by_based_on": "priority",
+ "type": "Bar",
+ "filters_json": "[]",
+ "is_public": 1,
+ "is_standard": 1,
+ "timeseries": 0,
+ "roles": []
+}

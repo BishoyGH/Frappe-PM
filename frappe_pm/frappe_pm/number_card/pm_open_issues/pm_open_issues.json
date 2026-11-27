@@ -1,0 +1,21 @@
+{
+ "creation": "2026-11-26 00:00:00.000000",
+ "modified": "2026-11-26 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "module": "Frappe PM",
+ "name": "PM Open Issues",
+ "docstatus": 0,
+ "doctype": "Number Card",
+ "label": "PM Open Issues",
+ "document_type": "PM Issue",
+ "function": "Count",
+ "filters_json": "[[\"PM Issue\", \"status\", \"in\", [\"Open\", \"In Progress\"]]]",
+ "dynamic_filters_json": "[]",
+ "is_public": 1,
+ "is_standard": 1,
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Daily",
+ "type": "Document Type",
+ "color": "#2490ef"
+}

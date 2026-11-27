@@ -1,0 +1,25 @@
+{
+ "creation": "2026-11-26 00:00:00.000000",
+ "modified": "2026-11-26 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "module": "Frappe PM",
+ "name": "PM Task Assigned",
+ "docstatus": 0,
+ "doctype": "Notification",
+ "subject": "You were assigned {{ doc.reference_name }}",
+ "document_type": "ToDo",
+ "event": "New",
+ "enabled": 1,
+ "is_standard": 1,
+ "channel": "System Notification",
+ "message": "<p>{{ doc.description }}</p>",
+ "message_type": "HTML",
+ "recipients": [
+  {
+   "receiver_by_document_field": "allocated_to"
+  }
+ ],
+ "condition": "doc.reference_type == 'PM Task'",
+ "send_system_notification": 1
+}

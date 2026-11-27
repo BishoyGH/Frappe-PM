@@ -144,3 +144,18 @@ class TestExtended(FrappeTestCase):
 
         cols, rows = execute({})
         self.assertTrue(cols)
+
+
+class TestApi(FrappeTestCase):
+    def test_bulk_update_rejects_unknown_field(self):
+        from frappe_pm.api import bulk_update_tasks
+
+        with self.assertRaises(frappe.ValidationError):
+            bulk_update_tasks("[]", '{"owner": "x"}')
+
+    def test_overview(self):
+        from frappe_pm.api import project_overview
+
+        p = make_project()
+        make_task(p.name)
+        self.assertEqual(project_overview(p.name)["project"], p.name)
